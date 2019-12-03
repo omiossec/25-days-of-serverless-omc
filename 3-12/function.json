@@ -1,0 +1,26 @@
+{
+    "bindings": [
+      {
+        "authLevel": "function",
+        "type": "httpTrigger",
+        "direction": "in",
+        "name": "Request",
+        "methods": [
+          "post"
+        ]
+      },
+      {
+        "type": "http",
+        "direction": "out",
+        "name": "Response"
+      },
+      {
+        "type": "table",
+        "name": "secretsantapets",
+        "tableName": "secretsantapets",
+        "connection": "AzureWebJobsStorage",
+        "direction": "out"
+      }
+    ],
+    "disabled": false
+  }
