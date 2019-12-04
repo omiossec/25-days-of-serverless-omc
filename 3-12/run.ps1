@@ -12,16 +12,24 @@ Try {
         $PetDataArray = @()
 
         foreach ($file in $GitHubAction.head_commit.added) {
-            $PetData = @{ 
-                "FileName" = $file
-                "partitionKey" = "secretsantapetphotos"
-                "sendername" = $CommitAuthor
-                "PhotoAdded"= Get-Date
-                "rowKey" = (new-guid).guid 
-            }
-            $PetDataArray += $PetData
+
+            if ([System.IO.Path]::GetExtension($file) -eq ".png") {
+                $PetData = @{ 
+                    "FileName" = $file
+                    "partitionKey" = "secretsantapetphotos"
+                    "sendername" = $CommitAuthor
+                    "PhotoAdded"= Get-Date
+                    "rowKey" = (new-guid).guid 
+                }
+                $PetDataArray += $PetData
+            } 
         }
-        Push-OutputBinding -Name secretsantapets -Value $PetDataArray
+
+        if ($PetDataArray.Count -gt 0) {
+            Push-OutputBinding -Name secretsantapets -Value $PetDataArray
+        }
+        
+
         $HttpResponse = [HttpResponseContext]@{ 
             StatusCode = [HttpStatusCode]::OK
             Body = "Pet Added"
