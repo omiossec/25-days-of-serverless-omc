@@ -4,13 +4,9 @@ param($Request, $TriggerMetadata)
 
 Try {
     $GitHubAction = $Request.Body
-
     if ($GitHubAction.repository.id -eq "225537685") {
-
         $CommitAuthor = $GitHubAction.head_commit.author.name
-
         $PetDataArray = @()
-
         foreach ($file in $GitHubAction.head_commit.added) {
 
             if ([System.IO.Path]::GetExtension($file) -eq ".png") {
@@ -34,7 +30,6 @@ Try {
             StatusCode = [HttpStatusCode]::OK
             Body = "Pet Added"
            }   
-
     }
     else {
         $HttpResponse = [HttpResponseContext]@{ 
@@ -45,7 +40,7 @@ Try {
 }
 catch {
     $HttpResponse = [HttpResponseContext]@{ 
-        StatusCode = [HttpStatusCode]::BadRequest
+        StatusCode = [HttpStatusCode]::InternalServerError
         Body = "Error while processing the request"
        } 
 }
