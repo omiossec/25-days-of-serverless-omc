@@ -1,6 +1,6 @@
 # 25-days-of-serverless-omc
 
-Repository for the #25DaysOfServerless by Olivier Miossec [@omiossec_med](https://twitter.com/omiossec_med), [linkedin](https://www.linkedin.com/in/omiossec/)
+Repository for the #25DaysOfServerless by Olivier Miossec [@omiossec_med](https://twitter.com/omiossec_med), [linkedin](https://www.linkedin.com/in/omiossec/), [DEV](https://dev.to/omiossec)
 
 * Day 1, 1-12 the dreidel
 * Day 3, 3-12 GitHub WebHook
